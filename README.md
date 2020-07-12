@@ -87,7 +87,7 @@ extend type Mutation {
 }	
 ```
 
-#Admin Type, Query and Mutation
+# Admin Type, Query and Mutation
 
 ```
 type FeedbackList implements PaginatedList {
