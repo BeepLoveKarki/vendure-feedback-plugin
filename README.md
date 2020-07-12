@@ -25,15 +25,18 @@ export const config: VendureConfig = {
 Optionally for Admin UI extensio, you may just add via following manner:
 
 ```
-  AdminUiPlugin.init({
-		...	
-			app: compileUiExtensions({
-			    outputPath: path.join(__dirname, '....'),
-				extensions: [
-				    FeedbackPlugin.uiExtensions
-                ]
-			}),
-        ...
+AdminUiPlugin.init({
+  ...	
+	app: compileUiExtensions({
+	 outputPath: path.join(__dirname, '....'),
+	 ...
+	 extensions:[
+		...
+		 FeedbackPlugin.uiExtensions,
+		...
+      ]
+	}),
+   ...
   })
 
 ```
@@ -43,68 +46,65 @@ The types, inputs and mutations updated after installing the plugin are:
 # Main Type
 
 ```
-    type Feedback implements Node {
-        id: ID!
-		name:String
-		email:String
-		phone:String
-		feedback: String!
-        createdAt: DateTime!
-        updatedAt: DateTime!
-    }
+type Feedback implements Node {
+  id: ID!
+  name:String
+  email:String
+  phone:String
+  feedback: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
 	
 ```
 
-#Inputs
+# Inputs
 
 ```
-
-  input FeedbackAddInput{
-	  name:String
-	  email:String
-      phone:String
-	  feedback: String!
-  }
+input FeedbackAddInput{
+  name:String
+  email:String
+  phone:String
+  feedback: String!
+}
   
-  input FeedbackUpdateInput{
-	  id: ID!
-	  name:String
-	  email:String
-      phone:String
-	  feedback: String!
-  }
+input FeedbackUpdateInput{
+  id: ID!
+  name:String
+  email:String
+  phone:String
+  feedback: String!
+}
   
-  input FeedbackListOptions
-
+input FeedbackListOptions
 ```
 
 # Shop Mutation
 
 ```
-   extend type Mutation {
-        addFeedback(input:FeedbackAddInput!): Feedback!
-    }
-	
+extend type Mutation {
+  addFeedback(input:FeedbackAddInput!): Feedback!
+}	
 ```
 
 #Admin Type, Query and Mutation
 
 ```
-    type FeedbackList implements PaginatedList {
-     items: [Feedback!]!
-     totalItems: Int!
-    }
+type FeedbackList implements PaginatedList {
+  items: [Feedback!]!
+  totalItems: Int!
+}
 
-    extend type Query {
-        Feedbacks(options: FeedbackListOptions): FeedbackList!
-		Feedback(id:ID!):Feedback
-    }
+extend type Query {
+  Feedbacks(options: FeedbackListOptions): FeedbackList!
+  Feedback(id:ID!):Feedback
+}
 	
-	extend type Mutation {
-        addFeedback(input:FeedbackAddInput!): Feedback!
-		updateFeedback(input:FeedbackUpdateInput!): Feedback!
-		deleteFeedback(id:ID!): Feedback!
-		deleteAllFeedbacks: Boolean!
-    }
+extend type Mutation {
+  addFeedback(input:FeedbackAddInput!): Feedback!
+  updateFeedback(input:FeedbackUpdateInput!): Feedback!
+  deleteFeedback(id:ID!): Feedback!
+  deleteAllFeedbacks: Boolean!
+}
 
 ```
