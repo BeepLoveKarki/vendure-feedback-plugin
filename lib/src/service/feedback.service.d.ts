@@ -1,5 +1,4 @@
-import { Connection } from 'typeorm';
-import { ListQueryBuilder } from '@vendure/core';
+import { ListQueryBuilder, TransactionalConnection } from '@vendure/core';
 import { ListQueryOptions } from '@vendure/core/dist/common/types/common-types';
 import { FeedbackEntity } from '../entities/feedback.entity';
 import { PluginInitOptions } from '../types';
@@ -7,7 +6,7 @@ export declare class FeedbackService {
     private connection;
     private options;
     private listQueryBuilder;
-    constructor(connection: Connection, options: PluginInitOptions, listQueryBuilder: ListQueryBuilder);
+    constructor(connection: TransactionalConnection, options: PluginInitOptions, listQueryBuilder: ListQueryBuilder);
     getAllFeedbacks(ctx: any, options?: ListQueryOptions<FeedbackEntity>): Promise<{
         items: FeedbackEntity[];
         totalItems: number;
