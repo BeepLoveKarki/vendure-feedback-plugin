@@ -78,19 +78,14 @@ export class AllFeedbacksListComponent extends BaseListComponent<
 	  let input = this.searchTerm.value;
 	  let filter = input.toUpperCase();
 	  let table = <HTMLElement> document.querySelector("#datatable >.table > tbody");
-	  console.log(table);
 	  let tr = table.getElementsByTagName("tr");
-	  console.log(tr);
 	  for (let i = 0; i < tr.length; i++) {
 		 
 		for(let j=0;j<4;j++){
 		  
 		  let td = tr[i].getElementsByTagName("td")[j];
-          console.log(td);
 		  if (td) {
-			 console.log("a");
 			 let txtValue = td.innerHTML;
-			 console.log(txtValue);
 			 if (txtValue.toUpperCase().indexOf(filter) > -1) {
 				  tr[i].style.display = "";
 				  break;
