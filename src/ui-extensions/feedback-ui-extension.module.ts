@@ -13,6 +13,7 @@ import { SharedModule, addNavMenuSection } from '@vendure/admin-ui/core';
         routerLink: ['/extensions/feedbacks'],
         // Icon can be any of https://clarity.design/icons
         icon: 'folder-open',
+		requiresPermission: 'SuperAdmin',
       }],
     },
     // Add this section before the "settings" section
