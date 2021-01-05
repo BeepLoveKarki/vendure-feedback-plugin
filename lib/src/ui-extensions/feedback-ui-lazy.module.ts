@@ -26,10 +26,12 @@ import { map } from 'rxjs/operators';
              {
                 label: 'Feedbacks',
                 link: ['/extensions', 'feedbacks'],
+				requiresPermission: 'SuperAdmin',
              },
              {
                 label: 'Create Feedback',
                 link: [],
+				requiresPermission: 'SuperAdmin',
              }
 	       ]
 	     } 
@@ -56,10 +58,12 @@ export function feedbackDetailBreadcrumb(resolved: { entity: Observable<Feedback
             {
                 label: 'Feedbacks',
                 link: ['/extensions', 'feedbacks'],
+				requiresPermission: 'SuperAdmin',
             },
             {
                 label: 'Update Feedback',
                 link: [],
+				requiresPermission: 'SuperAdmin',
             },
         ]),
     );
